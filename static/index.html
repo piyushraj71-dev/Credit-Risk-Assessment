@@ -1,0 +1,272 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#101b2d">
+    <title>CrediScope | Credit Risk Intelligence</title>
+    <link rel="stylesheet" href="/style.css">
+    <script src="/script.js" defer></script>
+</head>
+<body>
+    <div class="ambient ambient-one"></div>
+    <div class="ambient ambient-two"></div>
+
+    <header class="topbar">
+        <a class="brand" href="/" aria-label="CrediScope home">
+            <span class="brand-icon">C<span>+</span></span>
+            <span>
+                <strong>CrediScope</strong>
+                <small>CREDIT INTELLIGENCE</small>
+            </span>
+        </a>
+        <div class="system-status">
+            <span class="status-dot"></span>
+            ML PREDICTION SYSTEM
+        </div>
+    </header>
+
+    <main class="page">
+        <section class="intro">
+            <div class="eyebrow"><span></span> SMARTER LENDING DECISIONS</div>
+            <h1>Credit risk <span>assessment.</span></h1>
+            <p>Evaluate a loan application with machine learning.
+               Get a default probability and a risk classification in seconds.</p>
+        </section>
+
+        <div class="dashboard">
+            <section class="form-card panel">
+                <div class="section-heading">
+                    <div class="heading-icon">01</div>
+                    <div>
+                        <h2>Applicant details</h2>
+                        <p>Enter the borrower's financial information.</p>
+                    </div>
+                </div>
+
+                <form id="loan-form">
+                    <div class="form-section-title">PERSONAL & EMPLOYMENT</div>
+
+                    <div class="form-grid">
+                        <div class="field">
+                            <label for="person_age">Age <span>*</span></label>
+                            <div class="input-wrap">
+                                <input id="person_age" name="person_age"
+                                    type="number" min="18" max="100"
+                                    placeholder="e.g. 30" value="30" required>
+                                <span class="input-unit">years</span>
+                            </div>
+                        </div>
+
+                        <div class="field">
+                            <label for="person_income">Annual income <span>*</span></label>
+                            <div class="input-wrap">
+                                <span class="input-prefix">$</span>
+                                <input id="person_income" name="person_income"
+                                    type="number" min="1" step="any"
+                                    placeholder="85000" value="85000" required>
+                            </div>
+                        </div>
+
+                        <div class="field">
+                            <label for="person_home_ownership">Home ownership <span>*</span></label>
+                            <select id="person_home_ownership" name="person_home_ownership" required>
+                                <option value="RENT">Rent</option>
+                                <option value="OWN">Own</option>
+                                <option value="MORTGAGE" selected>Mortgage</option>
+                                <option value="OTHER">Other</option>
+                            </select>
+                        </div>
+
+                        <div class="field">
+                            <label for="person_emp_length">Employment length <span>*</span></label>
+                            <div class="input-wrap">
+                                <input id="person_emp_length" name="person_emp_length"
+                                    type="number" min="0" max="100" step="0.1"
+                                    value="7" placeholder="7" required>
+                                <span class="input-unit">years</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-section-title section-spaced">LOAN INFORMATION</div>
+
+                    <div class="form-grid">
+                        <div class="field">
+                            <label for="loan_intent">Loan purpose <span>*</span></label>
+                            <select id="loan_intent" name="loan_intent" required>
+                                <option value="PERSONAL">Personal</option>
+                                <option value="EDUCATION">Education</option>
+                                <option value="MEDICAL">Medical</option>
+                                <option value="VENTURE">Business venture</option>
+                                <option value="HOMEIMPROVEMENT" selected>Home improvement</option>
+                                <option value="DEBTCONSOLIDATION">Debt consolidation</option>
+                            </select>
+                        </div>
+
+                        <div class="field">
+                            <label for="loan_grade">Loan grade <span>*</span></label>
+                            <select id="loan_grade" name="loan_grade" required>
+                                <option>A</option>
+                                <option>B</option>
+                                <option>C</option>
+                                <option>D</option>
+                                <option>E</option>
+                                <option>F</option>
+                                <option>G</option>
+                            </select>
+                        </div>
+
+                        <div class="field">
+                            <label for="loan_amnt">Loan amount <span>*</span></label>
+                            <div class="input-wrap">
+                                <span class="input-prefix">$</span>
+                                <input id="loan_amnt" name="loan_amnt"
+                                    type="number" min="1" step="any"
+                                    value="5000" placeholder="5000" required>
+                            </div>
+                        </div>
+
+                        <div class="field">
+                            <label for="loan_int_rate">Interest rate <span>*</span></label>
+                            <div class="input-wrap">
+                                <input id="loan_int_rate" name="loan_int_rate"
+                                    type="number" min="0" max="100" step="0.01"
+                                    value="8.5" placeholder="8.5" required>
+                                <span class="input-unit">%</span>
+                            </div>
+                        </div>
+
+                        <div class="field">
+                            <label for="loan_percent_income">Loan / income ratio</label>
+                                  <input
+                                      id="loan_percent_income"
+                                      name="loan_percent_income"
+                                      type="number"
+                                      value="0.06"
+                                      readonly
+    >
+                                      <small>Automatically calculated from loan amount and annual income.</small>
+                        </div>
+
+                        <div class="field">
+                            <label for="cb_person_cred_hist_length">Credit history <span>*</span></label>
+                            <div class="input-wrap">
+                                <input id="cb_person_cred_hist_length"
+                                    name="cb_person_cred_hist_length"
+                                    type="number" min="0" max="100"
+                                    value="8" placeholder="8" required>
+                                <span class="input-unit">years</span>
+                            </div>
+                        </div>
+
+                        <div class="field full-width">
+                            <label>Previous default on file? <span>*</span></label>
+                            <div class="choice-group">
+                                <label class="choice">
+                                    <input type="radio" name="cb_person_default_on_file"
+                                        value="N" checked>
+                                    <span class="choice-box">
+                                        <span class="choice-mark"></span>
+                                        No previous default
+                                    </span>
+                                </label>
+                                <label class="choice">
+                                    <input type="radio" name="cb_person_default_on_file"
+                                        value="Y">
+                                    <span class="choice-box">
+                                        <span class="choice-mark"></span>
+                                        Previous default
+                                    </span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="form-error" class="form-error" role="alert" hidden></div>
+
+                    <button class="submit-button" type="submit" id="predict-button">
+                        <span id="button-label">Assess credit risk</span>
+                        <span class="button-arrow" id="button-arrow">↗</span>
+                    </button>
+                    <p class="secure-note">
+                        <span>◆</span> Your inputs are processed by your configured prediction API.
+                    </p>
+                </form>
+            </section>
+
+            <aside class="result-card panel" aria-live="polite">
+                <div class="result-topline">
+                    <span class="result-label">PREDICTION OVERVIEW</span>
+                    <span class="live-badge"><span></span> MODEL OUTPUT</span>
+                </div>
+
+                <div class="result-intro">
+                    <div>
+                        <h2>Risk assessment</h2>
+                        <p>Your prediction will appear here.</p>
+                    </div>
+                    <div class="shield-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" fill="none">
+                            <path d="M12 3 20 6v5c0 5-3.4 8.4-8 10-4.6-1.6-8-5-8-10V6l8-3Z"
+                                stroke="currentColor" stroke-width="1.6"/>
+                            <path d="m9 12 2 2 4-4" stroke="currentColor"
+                                stroke-width="1.6" stroke-linecap="round"
+                                stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                </div>
+
+                <div class="gauge" id="gauge" style="--progress: 0deg;">
+                    <div class="gauge-inner">
+                        <span class="gauge-value" id="probability">--<small>%</small></span>
+                        <span class="gauge-caption">DEFAULT PROBABILITY</span>
+                    </div>
+                </div>
+
+                <div class="risk-status status-neutral" id="risk-status">
+                    <span class="risk-status-dot"></span>
+                    <span id="risk-result">Awaiting assessment</span>
+                </div>
+
+                <p class="result-description" id="result-description">
+                    Complete the application form and select Assess credit risk to generate a prediction.
+                </p>
+
+                <div class="result-divider"></div>
+
+                <div class="metric-row">
+                    <div>
+                        <span class="metric-label">Decision threshold</span>
+                        <small>Saved model threshold</small>
+                    </div>
+                    <strong id="threshold">--</strong>
+                </div>
+
+                <div class="metric-row">
+                    <div>
+                        <span class="metric-label">Final classification</span>
+                        <small>Based on the threshold</small>
+                    </div>
+                    <strong id="classification">--</strong>
+                </div>
+
+                <div class="result-footer">
+                    <span class="footer-icon">i</span>
+                    <p>Predictions are estimates, not guarantees of repayment. Use them as decision support, not as the sole basis for lending.</p>
+                </div>
+
+                <button type="button" class="reset-button" id="reset-button">
+                    ↺ &nbsp; Reset assessment
+                </button>
+            </aside>
+        </div>
+
+        <footer class="page-footer">
+            <span>CrediScope <span class="footer-separator">/</span> Credit Risk Intelligence</span>
+            <span>Powered by your trained XGBoost model</span>
+        </footer>
+    </main>
+</body>
+</html>
